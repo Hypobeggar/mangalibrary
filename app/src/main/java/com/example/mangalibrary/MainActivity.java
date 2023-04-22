@@ -69,22 +69,8 @@ public class MainActivity extends AppCompatActivity {
         // Get a writable database instance
         mMangaDatabase = mMangaDbHelper.getWritableDatabase();
     }
-
-    // ...
 }
-You can add this code snippet to your MainActivity class after the declaration of the UI component variables.
 
-
-
-
-
-Eduardo Carbo
-where is  the declaration of the ui component variables
-
-In the current code provided, the declaration of UI component variables can be found in the onCreate method of the MainActivity class. Here's an example of what it looks like:
-
-scss
-Copy code
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
