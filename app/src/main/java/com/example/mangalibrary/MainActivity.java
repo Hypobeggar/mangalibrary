@@ -44,6 +44,76 @@ public class MangaLibrary extends AppCompatActivity {
             }
         });
     }
+public class MainActivity extends AppCompatActivity {
+
+    // Define variables for UI components
+    private EditText mSearchEditText;
+    private RecyclerView mMangaListRecyclerView;
+
+    // Define variables for database
+    private MangaDatabaseHelper mMangaDbHelper;
+    private SQLiteDatabase mMangaDatabase;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Find UI components by their ids
+        mSearchEditText = findViewById(R.id.edit_text_search);
+        mMangaListRecyclerView = findViewById(R.id.recycler_view_manga_list);
+
+        // Create a new instance of the database helper class
+        mMangaDbHelper = new MangaDatabaseHelper(this);
+
+        // Get a writable database instance
+        mMangaDatabase = mMangaDbHelper.getWritableDatabase();
+    }
+
+    // ...
+}
+You can add this code snippet to your MainActivity class after the declaration of the UI component variables.
+
+
+
+
+
+Eduardo Carbo
+where is  the declaration of the ui component variables
+
+In the current code provided, the declaration of UI component variables can be found in the onCreate method of the MainActivity class. Here's an example of what it looks like:
+
+scss
+Copy code
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    // Initialize UI component variables
+    editTextTitle = findViewById(R.id.editTextTitle);
+    editTextAuthor = findViewById(R.id.editTextAuthor);
+    editTextYear = findViewById(R.id.editTextYear);
+    editTextGenre = findViewById(R.id.editTextGenre);
+    buttonAdd = findViewById(R.id.buttonAdd);
+    buttonViewAll = findViewById(R.id.buttonViewAll);
+
+    // Set click listeners for buttons
+    buttonAdd.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Handle button click
+        }
+    });
+
+    buttonViewAll.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Handle button click
+        }
+    });
+}
+
 
     private void searchManga() {
         // Get the search query from the edit text
