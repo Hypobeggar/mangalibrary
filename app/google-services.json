@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "888913453998",
+    "project_id": "mangalibrary-f313d",
+    "storage_bucket": "mangalibrary-f313d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888913453998:android:78fd2f57c10f6c13b3de3f",
+        "android_client_info": {
+          "package_name": "com.example.mangalibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888913453998-b768ui2gtqd8pjdgee5svrcoelv5t2n5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mangalibrary",
+            "certificate_hash": "0d6c7bb977004be4163e827a20f9e9414cf062f1"
+          }
+        },
+        {
+          "client_id": "888913453998-nqgp9kd7os17doitph988n8cbkc1ir30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0R0GGWz08Qw2qAk6MVoxQPhCZjRllQ_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888913453998-nqgp9kd7os17doitph988n8cbkc1ir30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
