@@ -10,9 +10,9 @@
         android:id="@+id/logo"
         android:layout_width="411dp"
         android:layout_height="90dp"
-        android:contentDescription="Logo"
+        android:contentDescription="@string/app_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cloudLogo" />
+        app:srcCompat="@drawable/cloudlogo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
