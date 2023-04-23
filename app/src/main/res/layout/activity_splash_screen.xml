@@ -13,6 +13,8 @@
         android:layout_marginTop="-120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cloud" />
+        app:srcCompat="@drawable/cloud"
+        android:contentDescription="@string/app_logo"
+        tools:ignore="VisualLintBounds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
