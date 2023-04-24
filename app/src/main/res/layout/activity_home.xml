@@ -32,11 +32,10 @@
         android:layout_width="383dp"
         android:layout_height="90dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <SearchView
@@ -48,23 +47,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <ImageButton
+        android:id="@+id/avatar"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="10dp"
+        android:onClick="clickAvatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:background="@drawable/blankavatar" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/bookmarks"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/avatar"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:srcCompat="@drawable/star" />
 
@@ -75,8 +75,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:text="Popular"
+        android:textColor="@color/orange_main"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -84,7 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Recent Updates"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        android:textColor="@color/orange_main"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
