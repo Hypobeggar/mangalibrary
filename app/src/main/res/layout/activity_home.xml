@@ -56,7 +56,11 @@
         android:onClick="clickAvatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        tools:background="@drawable/blankavatar" />
+        android:src="@drawable/blankavatarsmall"
+        android:background="@color/off_white"
+         />
+        <!--tools:background="@drawable/blankavatar"-->
+
 
     <ImageView
         android:id="@+id/bookmarks"
