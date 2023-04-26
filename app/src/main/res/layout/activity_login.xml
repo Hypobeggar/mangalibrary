@@ -20,10 +20,11 @@
         android:id="@+id/sign_in_button"
         android:layout_width="193dp"
         android:layout_height="67dp"
-        android:layout_marginStart="108dp"
         android:layout_marginTop="188dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+        <!--android:onClick="onClick"-->
 
     <TextView
         android:id="@+id/signin"
