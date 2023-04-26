@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInOptions gso;
     GoogleSignInClient client ;
     SignInButton signInButton;
+    TextView signinText;
+    Button signout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +43,58 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         client = GoogleSignIn.getClient(this, gso);
 
+        // Sign in feature
         signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {// on click for Google sign in
             @Override
             public void onClick(View view) {
+
                 Intent i = client.getSignInIntent();
                 startActivityForResult(i,1234);
+                Log.i("Info","result code =" );
+            }
+
+        });
+        // Sign out feature
+        signout = findViewById(R.id.signout);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+
             }
         });
 
 
     }
+    private void signOut() {
+        client.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(LoginActivity.this, "Sign Out Successful", Toast.LENGTH_SHORT);
+                        revokeAccess();
+                        Intent i= new Intent(getApplicationContext(),HomeActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+    }
+    private void revokeAccess() {
+        client.revokeAccess()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                    }
+                });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1234){
+        Log.i("Info","result code =" + resultCode);
+        if (resultCode == -1){
             Task<GoogleSignInAccount> task =  GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount acct = task.getResult(ApiException.class);
@@ -62,8 +103,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+                            Toast.makeText(LoginActivity.this, "Sign-in Successful", Toast.LENGTH_SHORT);
+                            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(i);
+                            finish();
 
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(),Toast.LENGTH_LONG);
@@ -82,21 +125,31 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Check for already authenticated user
-        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        // TODO: Update UI
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
-            Intent i= new Intent(this,HomeActivity.class);
+        // Change to sign out if already signed in
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        signinText= findViewById(R.id.signin);
+        signout= findViewById(R.id.signout);
+        if(account != null){
+            signInButton.setVisibility(View.INVISIBLE);
+            signout.setVisibility(View.VISIBLE);
+            signinText.setText("Sign Out");
+
+        } else {
+            signout.setVisibility(View.INVISIBLE);
+            signInButton.setVisibility(View.VISIBLE);
+            signinText.setText("Sign In");
 
         }
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       // if(user != null){
+         //   Intent i= new Intent(this,HomeActivity.class);
+
+        //}
     }
 
 
 
-    private void signIn() {
-        Intent signInIntent = client.getSignInIntent();
-        startActivityForResult(signInIntent, 1);
-    }
+
 }
