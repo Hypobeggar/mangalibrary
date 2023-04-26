@@ -34,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         if (account != null) {
             Uri personPhoto = account.getPhotoUrl();
             Glide.with(this).load(personPhoto).into(avatar); //  Get the google avatar image
+        } else {
+            avatar.setImageResource(R.drawable.blankavatarsmall);
         }
     }
 
