@@ -1,7 +1,6 @@
 package com.example.mangalibrary;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.mangalibrary.MangaViewHolder;
-import com.example.mangalibrary.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
