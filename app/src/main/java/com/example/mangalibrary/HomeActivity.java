@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton avatar;
     RecyclerView popularRecycler, recentRecycler;
     DatabaseReference dbref;
+    MangaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,23 @@ public class HomeActivity extends AppCompatActivity {
         recentRecycler= findViewById(R.id.recentManga);
         dbref= FirebaseDatabase.getInstance().getReference();
 
+        adapter= new MangaAdapter(dbref);
+        adapter.setOnItemClickListener(new MangaAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(MangaAdapter.PopularManga manga) {
+                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+                intent.putExtra("title", manga.getTitle());
+                intent.putExtra("imageUrl", manga.getImageUrl());
+                startActivity(intent);
+            }
+        });
+
         popularRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        popularRecycler.setAdapter(new MangaAdapter(dbref));
+        popularRecycler.setAdapter(adapter);
+
+
         recentRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recentRecycler.setAdapter(new MangaAdapter(dbref));
+        recentRecycler.setAdapter(adapter);
     }
 
     @Override
