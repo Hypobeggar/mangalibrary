@@ -79,7 +79,7 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaViewHolder> implemen
         onItemClickListener = listener;
     }
 
-    //@Override
+    @Override
     public void onClick(View view) {
         if (onItemClickListener != null) {
             int position = (int) view.getTag();

@@ -33,14 +33,8 @@ public class HomeActivity extends AppCompatActivity {
         dbref= FirebaseDatabase.getInstance().getReference();
 
         adapter= new MangaAdapter(dbref);
-        adapter.setOnItemClickListener(new MangaAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(MangaAdapter.PopularManga manga) {
-                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                intent.putExtra("title", manga.getTitle());
-                intent.putExtra("imageUrl", manga.getImageUrl());
-                startActivity(intent);
-            }
+        adapter.setOnItemClickListener(manga -> { //
+
         });
 
         popularRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
