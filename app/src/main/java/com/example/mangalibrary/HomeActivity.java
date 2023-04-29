@@ -27,10 +27,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         avatar = findViewById(R.id.avatar);
         popularRecycler= findViewById(R.id.popularManga);
+        recentRecycler= findViewById(R.id.recentManga);
         dbref= FirebaseDatabase.getInstance().getReference();
 
-        popularRecycler.setLayoutManager(new LinearLayoutManager(this));
+        popularRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         popularRecycler.setAdapter(new MangaAdapter(dbref));
+        recentRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recentRecycler.setAdapter(new MangaAdapter(dbref));
     }
 
     @Override
