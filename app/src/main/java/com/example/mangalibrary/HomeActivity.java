@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         recentRecycler= findViewById(R.id.recentManga);
         dbref= FirebaseDatabase.getInstance().getReference();
 
-        adapter= new MangaAdapter(dbref);
+        adapter= new MangaAdapter(dbref,"Manga");
         adapter.setOnItemClickListener(manga -> { //
 
         });

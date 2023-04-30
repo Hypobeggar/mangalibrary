@@ -23,11 +23,13 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaViewHolder> implemen
     DatabaseReference dbref;
     List<PopularManga> mangas;
     OnItemClickListener onItemClickListener;
-    public MangaAdapter(DatabaseReference databaseReference) {
+    String dbrefpath;
+    public MangaAdapter(DatabaseReference databaseReference, String path) {
         dbref = databaseReference;
+        dbrefpath= "Manga";
         mangas = new ArrayList<>();
 
-        DatabaseReference mangaRef = dbref.child("Manga");
+         DatabaseReference mangaRef = dbref.child(dbrefpath);
         mangaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) { //
@@ -89,6 +91,7 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaViewHolder> implemen
             i.putExtra("title", manga.getTitle());
             i.putExtra("imageUrl", manga.getImageUrl());
             i.putExtra("description", manga.getDescription());
+            i.putExtra("dbpath", dbrefpath);
             view.getContext().startActivity(i);
         }
     }
