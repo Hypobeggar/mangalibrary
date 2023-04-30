@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         dbref= FirebaseDatabase.getInstance().getReference();
 
         adapter= new MangaAdapter(dbref,"Manga");
-        adapter.setOnItemClickListener(manga -> { //
+        adapter.setOnItemClickListener(manga -> {
 
         });
 
@@ -51,8 +51,8 @@ public class HomeActivity extends AppCompatActivity {
         avatar = findViewById(R.id.avatar);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
-            Uri personPhoto = account.getPhotoUrl();
-            Glide.with(this).load(personPhoto).into(avatar); //  Get the google avatar image
+            Uri profilePicture = account.getPhotoUrl();
+            Glide.with(this).load(profilePicture).into(avatar); //  Get the google avatar image
         } else {
             avatar.setImageResource(R.drawable.blankavatarsmall);
         }
