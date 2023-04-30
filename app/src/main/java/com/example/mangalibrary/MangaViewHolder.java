@@ -17,4 +17,5 @@ public class MangaViewHolder extends RecyclerView.ViewHolder {
         cover= itemView.findViewById(R.id.manga_cover);
         title= itemView.findViewById(R.id.manga_title);
     }
+
 }

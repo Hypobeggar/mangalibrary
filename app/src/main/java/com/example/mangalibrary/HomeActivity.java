@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton avatar;
     RecyclerView popularRecycler, recentRecycler;
     DatabaseReference dbref;
+    MangaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,17 @@ public class HomeActivity extends AppCompatActivity {
         recentRecycler= findViewById(R.id.recentManga);
         dbref= FirebaseDatabase.getInstance().getReference();
 
+        adapter= new MangaAdapter(dbref,"Manga");
+        adapter.setOnItemClickListener(manga -> {
+
+        });
+
         popularRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        popularRecycler.setAdapter(new MangaAdapter(dbref));
+        popularRecycler.setAdapter(adapter);
+
+
         recentRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recentRecycler.setAdapter(new MangaAdapter(dbref));
+        recentRecycler.setAdapter(adapter);
     }
 
     @Override
@@ -43,8 +51,8 @@ public class HomeActivity extends AppCompatActivity {
         avatar = findViewById(R.id.avatar);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
-            Uri personPhoto = account.getPhotoUrl();
-            Glide.with(this).load(personPhoto).into(avatar); //  Get the google avatar image
+            Uri profilePicture = account.getPhotoUrl();
+            Glide.with(this).load(profilePicture).into(avatar); //  Get the google avatar image
         } else {
             avatar.setImageResource(R.drawable.blankavatarsmall);
         }
